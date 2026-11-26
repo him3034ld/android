@@ -1,0 +1,14 @@
+name: mirror
+on: workflow_dispatch
+jobs:
+  m:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - run: |
+          docker pull redroid/redroid:11.0.0-latest
+          docker tag redroid/redroid:11.0.0-latest ghcr.io/him3034ld/redroid:11.0.0-latest
+          docker push ghcr.io/him3034ld/redroid:11.0.0-latest
