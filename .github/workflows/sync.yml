@@ -4,8 +4,8 @@ jobs:
   m:
     runs-on: ubuntu-latest
     steps:
-      - run: docker pull redroid/redroid:11.0.0-latest
-      - run: docker save redroid/redroid:11.0.0-latest | gzip > redroid.tar.gz
+      - run: docker pull ghcr.io/him3034ld/redroid:11.0.0-latest
+      - run: docker save ghcr.io/him3034ld/redroid:11.0.0-latest | gzip > redroid.tar.gz
       - uses: actions/upload-artifact@v4
         with:
           name: redroid
